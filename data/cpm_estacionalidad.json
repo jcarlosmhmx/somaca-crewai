@@ -1,0 +1,9 @@
+{
+  "_nota": "Fuente: PEAS C.2, tabla 2. Precedencia al clasificar una fecha: eventos_especiales > temporada_alta > fin_de_semana > dia_laboral.",
+  "periodos": [
+    {"clave": "dia_laboral", "nombre": "Día laboral (lunes-jueves)", "cpm_min": 15, "cpm_max": 25, "variacion": 0.00, "justificacion": "Demanda estándar"},
+    {"clave": "fin_de_semana", "nombre": "Fin de semana (viernes-domingo)", "cpm_min": 18, "cpm_max": 30, "variacion": 0.20, "justificacion": "Mayor interés en viajes"},
+    {"clave": "temporada_alta", "nombre": "Temporada alta (julio-agosto, diciembre)", "cpm_min": 25, "cpm_max": 40, "variacion": 0.40, "justificacion": "Alta demanda turística"},
+    {"clave": "eventos_especiales", "nombre": "Eventos especiales (Guelaguetza)", "cpm_min": 30, "cpm_max": 45, "variacion": 0.50, "justificacion": "Pico de interés cultural"}
+  ]
+}

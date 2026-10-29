@@ -1,0 +1,5 @@
+{
+  "_nota": "Fuente: PEAS C.1. U(a) = Conversiones*w1 + ROI*w2 + Estabilidad*w3",
+  "Cultural":  {"w1_conversiones": 0.50, "w2_roi": 0.35, "w3_estabilidad": 0.15, "justificacion": "Leads críticos para ocupación"},
+  "Romantica": {"w1_conversiones": 0.40, "w2_roi": 0.45, "w3_estabilidad": 0.15, "justificacion": "ROI prioritario para rentabilidad"}
+}

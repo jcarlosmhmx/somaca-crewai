@@ -1,0 +1,5 @@
+crewai==1.15.33
+python-dotenv==1.2.4
+numpy
+pandas
+pytest

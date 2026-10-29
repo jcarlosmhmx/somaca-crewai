@@ -1,0 +1,36 @@
+{
+  "_nota": "Restricciones y objetivos: PEAS C.1 y C.3. La seccion 'economia' son SUPUESTOS sinteticos (el PEAS no define el ingreso por reserva). Ficha y PEAS discrepan en presupuesto (1,000 MXN/mes vs 1,000 MXN en 12 dias): aqui se usa el PEAS.",
+  "presupuesto_total_mxn": 1000,
+  "reparto_inicial": {"Cultural": 500, "Romantica": 500},
+  "segmento_inicial": {"Cultural": 1, "Romantica": 3},
+  "duracion_dias": 12,
+  "iteraciones_por_dia": 4,
+  "fecha_inicio": "2026-11-09",
+  "eventos_especiales": [],
+  "iteracion_corte": 24,
+  "restricciones": {
+    "max_cambio_presupuesto": 0.20,
+    "max_cambio_puja": 0.10,
+    "max_cambios_audiencia_por_iteracion": 1,
+    "roi_minimo_para_operar": 0.5
+  },
+  "objetivos": {
+    "leads_min": 45, "leads_max": 48,
+    "cpl_max_mxn": 21.04,
+    "ctr_min": 0.018,
+    "impresiones_min": 6000,
+    "roas_min": 2.5,
+    "conv_lead_a_reserva_min": 0.10
+  },
+  "economia": {
+    "tasa_lead_a_reserva": 0.10,
+    "ingreso_por_reserva_mxn": 900,
+    "fuente": "supuesto sintetico"
+  },
+  "definiciones": {
+    "ROI": "(ingresos - gasto) / gasto",
+    "ROAS": "ingresos / gasto",
+    "CPL": "gasto / leads",
+    "Estabilidad": "1 - coeficiente de variacion de las conversiones por iteracion (acotado a [0,1])"
+  }
+}

@@ -1,0 +1,22 @@
+# Secretos
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# macOS / editores
+.DS_Store
+.vscode/
+.idea/
+
+# Logs de corridas locales (el log de la demo final se guarda en logs/demo_final.log)
+logs/*
+!logs/.gitkeep
+!logs/demo_final.log

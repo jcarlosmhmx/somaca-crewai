@@ -1,0 +1,15 @@
+{
+  "_nota": "Segmentos 1-4: conv_rate y CPM tomados del PEAS C.2 (Fase 2). Segmentos 5-10: muestra sintetica propuesta para el prototipo (el PEAS habla de 40+ segmentos; aqui se usan 10). ctr_base es un supuesto sintetico en TODOS los segmentos (el PEAS no lo define). Ingrid debe validar los segmentos 5-10.",
+  "segmentos": [
+    {"segment_id": 1, "nombre": "Viajeros 35-55 años, arqueología/historia", "campana": "Cultural", "conv_min": 0.035, "conv_max": 0.040, "cpm_min": 25, "cpm_max": 35, "ctr_base": 0.032, "fuente": "PEAS C.2"},
+    {"segment_id": 2, "nombre": "Turistas internacionales, aventura", "campana": "Cultural", "conv_min": 0.025, "conv_max": 0.035, "cpm_min": 20, "cpm_max": 28, "ctr_base": 0.030, "fuente": "PEAS C.2"},
+    {"segment_id": 3, "nombre": "Parejas 25-45, viajes románticos", "campana": "Romantica", "conv_min": 0.040, "conv_max": 0.050, "cpm_min": 28, "cpm_max": 38, "ctr_base": 0.036, "fuente": "PEAS C.2"},
+    {"segment_id": 4, "nombre": "Foodies, gastronomía oaxaqueña", "campana": "Romantica", "conv_min": 0.035, "conv_max": 0.045, "cpm_min": 22, "cpm_max": 32, "ctr_base": 0.033, "fuente": "PEAS C.2"},
+    {"segment_id": 5, "nombre": "Estudiantes y académicos de arqueología", "campana": "Cultural", "conv_min": 0.030, "conv_max": 0.038, "cpm_min": 18, "cpm_max": 26, "ctr_base": 0.030, "fuente": "sintetico"},
+    {"segment_id": 6, "nombre": "Familias, turismo cultural", "campana": "Cultural", "conv_min": 0.025, "conv_max": 0.032, "cpm_min": 20, "cpm_max": 30, "ctr_base": 0.028, "fuente": "sintetico"},
+    {"segment_id": 7, "nombre": "Adultos 55+, turismo cultural", "campana": "Cultural", "conv_min": 0.028, "conv_max": 0.036, "cpm_min": 16, "cpm_max": 24, "ctr_base": 0.026, "fuente": "sintetico"},
+    {"segment_id": 8, "nombre": "Recién casados, luna de miel", "campana": "Romantica", "conv_min": 0.042, "conv_max": 0.052, "cpm_min": 32, "cpm_max": 42, "ctr_base": 0.034, "fuente": "sintetico"},
+    {"segment_id": 9, "nombre": "Parejas 30-50, escapadas de fin de semana", "campana": "Romantica", "conv_min": 0.038, "conv_max": 0.048, "cpm_min": 24, "cpm_max": 34, "ctr_base": 0.032, "fuente": "sintetico"},
+    {"segment_id": 10, "nombre": "Parejas, aniversarios y mezcal/vino", "campana": "Romantica", "conv_min": 0.032, "conv_max": 0.042, "cpm_min": 20, "cpm_max": 30, "ctr_base": 0.030, "fuente": "sintetico"}
+  ]
+}
