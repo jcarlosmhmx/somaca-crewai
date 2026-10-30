@@ -1,6 +1,7 @@
 # SOMACA – Sistema Multiagente para campañas de Meta Ads (Fase 3)
 
 Prototipo con **CrewAI** para el Hotel Parador Monte Carmelo.
+Repositorio: https://github.com/jcarlosmhmx/somaca-crewai
 Materia: Inteligencia Artificial – Maestría en Big Data e IA, Universidad Anáhuac Puebla.
 
 ## Arquitectura
