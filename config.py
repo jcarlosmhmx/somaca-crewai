@@ -9,12 +9,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SEED = int(os.getenv("SIM_SEED", "42"))
 
 
 def get_llm() -> LLM:
     """Devuelve el LLM compartido por todos los agentes."""
-    return LLM(
-        model=os.getenv("MODEL", "anthropic/claude-haiku-5-5"),
-        temperature=float(os.getenv("TEMPERATURE", "0.2")),
-    )
+    kwargs = {"model": os.getenv("MODEL", "anthropic/claude-haiku-5-5")}
+    if os.getenv("TEMPERATURE"):  # los modelos Claude 5.x rechazan temperature
+        kwargs["temperature"] = float(os.getenv("TEMPERATURE"))
+    return LLM(**kwargs)

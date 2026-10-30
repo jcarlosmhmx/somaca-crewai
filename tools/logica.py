@@ -34,7 +34,7 @@ def _periodos() -> dict:
 
 @cache
 def _filas() -> tuple:
-    return tuple(sim.simular(int(os.getenv("SIM_SEED", "42"))))
+    return tuple(sim.simular(sim.semilla()))
 
 
 def normalizar_campana(campana: str) -> str:

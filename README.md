@@ -40,6 +40,6 @@ Juan Carlos Morales · Arantza Solano · Ingrid Orellán · Víctor Luna
 
 ## Datos y simulador
 
-- `data/*.json`: datos del dominio (PEAS) y restricciones. `python simulador.py` genera `data/metricas_simuladas.csv` (semilla `SIM_SEED`, 96 filas: 48 iteraciones × 2 campañas).
+- `data/*.json`: datos del dominio (PEAS) y restricciones. `python simulador.py` genera `data/metricas_simuladas.csv` (semilla `SIM_SEED`, 13 por defecto, 96 filas: 48 iteraciones × 2 campañas).
 - Fuentes, supuestos y hallazgos: `docs/supuestos_datos.md`.
 - Pruebas: `python -m pytest tests`.

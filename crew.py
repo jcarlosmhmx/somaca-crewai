@@ -22,7 +22,7 @@ def entradas() -> dict:
     inicio = date.fromisoformat(cfg["fecha_inicio"])
     ultimo = inicio + timedelta(days=cfg["duracion_dias"] - 1)
     primer_restante = inicio + timedelta(days=corte // ipd)
-    filas = sim.simular(int(os.getenv("SIM_SEED", "42")))
+    filas = sim.simular(sim.semilla())
     restante = sum(
         [r for r in filas if r["campana"] == c and r["iteracion"] == corte][0]["presupuesto_disponible"]
         for c in sim.CAMPANAS
@@ -33,6 +33,7 @@ def entradas() -> dict:
         "primer_dia_restante": primer_restante.isoformat(),
         "ultimo_dia": ultimo.isoformat(),
         "presupuesto_restante": round(restante, 2),
+        "semilla": sim.semilla(),
     }
 
 

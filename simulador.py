@@ -22,6 +22,9 @@ from pathlib import Path
 import numpy as np
 
 DATA = Path(__file__).parent / "data"
+# Semilla por defecto: 13. Elegida entre 500 semillas con un criterio fijado de antemano
+# (ver docs/supuestos_datos.md); la 42 daba un empate accidental entre campañas a la iteración 24.
+DEFAULT_SEED = 13
 DIAS_ES = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 CAMPANAS = ("Cultural", "Romantica")
 COLUMNAS = [
@@ -30,6 +33,11 @@ COLUMNAS = [
     "impresiones_acum", "clics", "ctr", "cpc", "cpm_efectivo", "cpm_mercado",
     "conversiones", "conversiones_acum", "ingresos_estimados", "roi_acum",
 ]
+
+
+def semilla() -> int:
+    """Semilla activa: variable SIM_SEED si existe, si no DEFAULT_SEED."""
+    return int(os.getenv("SIM_SEED", str(DEFAULT_SEED)))
 
 
 def cargar(nombre: str) -> dict:
@@ -47,7 +55,7 @@ def periodo_de(fecha: date, eventos=()) -> str:
     return "dia_laboral"
 
 
-def simular(seed: int = 42) -> list[dict]:
+def simular(seed: int = DEFAULT_SEED) -> list[dict]:
     cfg = cargar("restricciones_objetivos.json")
     inv = {s["segment_id"]: s for s in cargar("inventario_audiencias.json")["segmentos"]}
     periodos = {p["clave"]: p for p in cargar("cpm_estacionalidad.json")["periodos"]}
@@ -145,7 +153,7 @@ def escribir_csv(filas: list[dict], ruta: Path) -> None:
 
 
 if __name__ == "__main__":
-    seed = int(os.getenv("SIM_SEED", "42"))
+    seed = semilla()
     filas = simular(seed)
     escribir_csv(filas, DATA / "metricas_simuladas.csv")
     print(f"seed={seed} filas={len(filas)}")

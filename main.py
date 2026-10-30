@@ -18,6 +18,12 @@ def main():
     Path("logs/resultado_final.md").write_text(str(resultado), encoding="utf-8")
     print("\n=== RESPUESTA FINAL ===\n" + str(resultado))
 
+    # Consumo de tokens de la corrida (para estimar el costo en console.anthropic.com → Usage)
+    uso = getattr(resultado, "token_usage", None)
+    if uso is not None:
+        Path("logs/uso_tokens.txt").write_text(str(uso), encoding="utf-8")
+        print("\n=== USO DE TOKENS ===\n" + str(uso))
+
 
 if __name__ == "__main__":
     main()

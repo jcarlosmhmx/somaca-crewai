@@ -34,13 +34,14 @@ def crear_tareas(a: dict) -> list[Task]:
                 "2) Usa proyectar_escenario para comparar al menos 3 alternativas (mantener segmento y "
                 "presupuesto, cambiar de segmento, subir o bajar presupuesto). 3) Elige la mejor por "
                 "utilidad (calcular_utilidad) y valídala con validar_restricciones. 4) Declara cuánto "
-                "presupuesto necesitas para lo que queda y si pides o cedes presupuesto al Broker."
+                "presupuesto necesitas para lo que queda y si pides o cedes presupuesto al Broker. Reporta "
+                "siempre el ROAS (ingresos / gasto) además del ROI: ROAS = ROI + 1."
             ),
             expected_output=(
                 "Un objeto JSON con las claves: campana, diagnostico (texto breve con cifras), "
-                "alternativas_evaluadas (lista con segment_id, presupuesto, leads, roi y utilidad), "
+                "alternativas_evaluadas (lista con segment_id, presupuesto, leads, cpl, roas, roi y utilidad), "
                 "propuesta (segment_id, presupuesto_restante_mxn, cambio_puja_pct, cambio_audiencia: "
-                "true o false), utilidad_esperada, solicitud_al_broker (tipo: pedir, ceder o mantener; "
+                "true o false, roas_proyectado), utilidad_esperada, solicitud_al_broker (tipo: pedir, ceder o mantener; "
                 "monto_mxn; razon) y validacion (resultado de validar_restricciones)."
             ),
             agent=a[clave],
@@ -76,7 +77,8 @@ def crear_tareas(a: dict) -> list[Task]:
             "validar_reparto_presupuesto. 2) Verifica cada campaña con validar_restricciones usando los "
             "cambios de presupuesto, de puja y de audiencia propuestos. 3) Contrasta lo proyectado con "
             "los objetivos (CPL ≤ 21.04 MXN, CTR ≥ 1.8%, ROAS ≥ 2.5x, 45-48 leads) y señala qué se "
-            "cumple y qué no. 4) Emite un veredicto: aprobado, aprobado_con_observaciones o rechazado."
+            "cumple y qué no. El ROAS no es el ROI: ROAS = ROI + 1, así que un ROI de 1.5 equivale a "
+            "un ROAS de 2.5x; compara el ROAS, no el ROI, contra la meta. 4) Emite un veredicto: aprobado, aprobado_con_observaciones o rechazado."
         ),
         expected_output=(
             "Un objeto JSON con las claves: veredicto, restricciones_cumplidas (true o false), "
