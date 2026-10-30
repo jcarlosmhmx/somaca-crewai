@@ -31,6 +31,6 @@
     "ROI": "(ingresos - gasto) / gasto",
     "ROAS": "ingresos / gasto",
     "CPL": "gasto / leads",
-    "Estabilidad": "1 - coeficiente de variacion de las conversiones por iteracion (acotado a [0,1])"
+    "Estabilidad": "1 - coeficiente de variacion de las conversiones diarias (acotado a [0,1]; 0.5 si hay menos de 2 dias)"
   }
 }

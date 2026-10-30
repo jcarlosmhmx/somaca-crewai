@@ -1,5 +1,6 @@
-"""Herramientas personalizadas (@tool) de los agentes.
+"""Herramientas de los agentes.
 
-Pendiente (Tarea 5): consultar_cpm_mercado, leer_inventario_audiencias,
-leer_metricas_campana, calcular_utilidad, validar_restricciones.
+- tools/logica.py: funciones puras (sin CrewAI), con pruebas en tests/.
+- tools/herramientas.py: envoltorios @tool que usan los agentes
+  (se importa como `from tools.herramientas import ...` para no exigir crewai en las pruebas).
 """
