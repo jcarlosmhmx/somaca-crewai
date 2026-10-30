@@ -1,0 +1,1 @@
+total_tokens=1215500 prompt_tokens=958230 cached_prompt_tokens=424730 completion_tokens=257270 reasoning_tokens=0 cache_creation_tokens=100440 successful_requests=135

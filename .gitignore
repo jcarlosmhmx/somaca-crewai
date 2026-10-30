@@ -16,7 +16,5 @@ venv/
 .vscode/
 .idea/
 
-# Logs de corridas locales (el log de la demo final se guarda en logs/demo_final.log)
-logs/*
-!logs/.gitkeep
-!logs/demo_final.log
+# Logs: se ignoran las corridas de depuración (logs/archivo/); la corrida final se versiona
+logs/archivo/

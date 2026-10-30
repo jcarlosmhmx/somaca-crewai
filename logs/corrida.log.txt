@@ -1,0 +1,262 @@
+2026-10-30 15:02:09: task_name="None", task="Estamos en la iteración 24 de 48 (fecha de corte: 2026-11-14). Quedan los días del 2026-11-15 al 2026-11-20. 1) Consulta el CPM de mercado de cada día restante con consultar_cpm_mercado. 2) Lee el inventario de audiencias de las campañas Cultural y Romantica. 3) Para cada campaña identifica los 2 segmentos más atractivos según tasa de conversión y CPM esperado, explicando por qué.", agent="Analista de Mercado de Meta Ads", status="started"
+2026-10-30 15:02:25: task_name="None", task="Estamos en la iteración 24 de 48 (fecha de corte: 2026-11-14). Quedan los días del 2026-11-15 al 2026-11-20. 1) Consulta el CPM de mercado de cada día restante con consultar_cpm_mercado. 2) Lee el inventario de audiencias de las campañas Cultural y Romantica. 3) Para cada campaña identifica los 2 segmentos más atractivos según tasa de conversión y CPM esperado, explicando por qué.", agent="Analista de Mercado de Meta Ads", status="completed", output="```json
+{
+  "resumen_cpm": [
+    {
+      "periodo": "fin_de_semana",
+      "dias_que_cubre": ["2026-11-15 (domingo)", "2026-11-20 (viernes)"],
+      "cpm_min_mxn": 18,
+      "cpm_max_mxn": 30,
+      "variacion_vs_base": 0.2,
+      "justificacion_herramienta": "Mayor interés en viajes"
+    },
+    {
+      "periodo": "dia_laboral",
+      "dias_que_cubre": ["2026-11-16 (lunes)", "2026-11-17 (martes)", "2026-11-18 (miércoles)", "2026-11-19 (jueves)"],
+      "cpm_min_mxn": 15,
+      "cpm_max_mxn": 25,
+      "variacion_vs_base": 0.0,
+      "justificacion_herramienta": "Demanda estándar"
+    }
+  ],
+  "cultural": {
+    "segmentos_recomendados": [
+      {
+        "segment_id": 1,
+        "nombre": "Viajeros 35-55 años, arqueología/historia",
+        "justificacion": "Es el segmento con la mayor tasa de conversión de Cultural (3.5%-4.0%) y CTR base de 3.2%. Su CPM esperado (25-35 MXN) es el más alto de la campaña, por lo que conviene priorizarlo en los días laborales (CPM de mercado 15-25 MXN) y limitar su exposición los fines de semana (15 y 20 de noviembre), cuando el CPM de mercado sube hasta 18-30 MXN."
+      },
+      {
+        "segment_id": 5,
+        "nombre": "Estudiantes y académicos de arqueología",
+        "justificacion": "Combina una conversión alta (3.0%-3.8%) con un CPM esperado moderado (18-26 MXN), lo que da una relación conversión/costo favorable. Su CPM mínimo queda dentro del rango de los días laborales, así que es un buen complemento al segmento 1 en esta ventana. Su fuente es 'sintetico', por lo que conviene validarlo con datos reales."
+      }
+    ]
+  },
+  "romantica": {
+    "segmentos_recomendados": [
+      {
+        "segment_id": 3,
+        "nombre": "Parejas 25-45, viajes románticos",
+        "justificacion": "Tiene una de las tasas de conversión más altas de Romantica (4.0%-5.0%), solo por debajo de Recién casados (segmento 8), con CTR base de 3.6%, el más alto de la campaña. Su CPM esperado (28-38 MXN) es elevado, pero su conversión lo compensa; es el mejor candidato para los días laborales, cuando el mercado está en 15-25 MXN."
+      },
+      {
+        "segment_id": 9,
+        "nombre": "Parejas 30-50, escapadas de fin de semana",
+        "justificacion": "Conversión sólida (3.8%-4.8%) con un CPM esperado más bajo (24-34 MXN) que los segmentos 3 y 8. Su enfoque en escapadas de fin de semana encaja con el periodo de 15 y 20 de noviembre, cuando el CPM de mercado sube 20% y la demanda por viajes es mayor. Su fuente es 'sintetico', por lo que conviene validarlo."
+      }
+    ]
+  },
+  "observaciones": "Los días 15 y 20 de noviembre son fin de semana con CPM de mercado 18-30 MXN (+20% vs base), mientras que del 16 al 19 de noviembre es día laboral con CPM 15-25 MXN (sin variación). Los segmentos de mayor conversión de Romantica (8 y 3) tienen CPM esperado de 32-42 y 28-38 MXN, por lo que en fin de semana su costo sube y la eficiencia baja; el segmento 8 queda como alternativa premium solo si el rendimiento lo justifica. En Cultural, el segmento 7 (Adultos 55+, CPM 16-24, conversión 2.8%-3.6%) es el más económico y puede ser opción de contención de costos, aunque no fue seleccionado entre los dos principales. Varios segmentos tienen fuente 'sintetico', así que sus cifras deben validarse antes de mover presupuesto. Esta información es para los agentes de campaña: no se propone ningún cambio de presupuesto ni de puja en este reporte, y cualquier cambio de audiencia debe respetar el límite de 1 por iteración."
+}
+```"
+2026-10-30 15:02:25: task_name="None", task="Eres responsable de la campaña Cultural. Estamos en la iteración 24 de 48 y el presupuesto restante total del sistema es 500.0 MXN. 1) Lee tus métricas con leer_metricas_campana (campana='Cultural', hasta_iteracion=24) y diagnostica el desempeño frente a los objetivos. 2) Usa proyectar_escenario para comparar al menos 3 alternativas (mantener segmento y presupuesto, cambiar de segmento, subir o bajar presupuesto). 3) Elige la mejor por utilidad (calcular_utilidad) y valídala con validar_restricciones. 4) Declara cuánto presupuesto necesitas para lo que queda y si pides o cedes presupuesto al Broker. Reporta siempre el ROAS (ingresos / gasto) además del ROI: ROAS = ROI + 1.", agent="Agente de Campaña Cultural", status="started"
+2026-10-30 15:02:25: task_name="None", task="Eres responsable de la campaña Romántica. Estamos en la iteración 24 de 48 y el presupuesto restante total del sistema es 500.0 MXN. 1) Lee tus métricas con leer_metricas_campana (campana='Romántica', hasta_iteracion=24) y diagnostica el desempeño frente a los objetivos. 2) Usa proyectar_escenario para comparar al menos 3 alternativas (mantener segmento y presupuesto, cambiar de segmento, subir o bajar presupuesto). 3) Elige la mejor por utilidad (calcular_utilidad) y valídala con validar_restricciones. 4) Declara cuánto presupuesto necesitas para lo que queda y si pides o cedes presupuesto al Broker. Reporta siempre el ROAS (ingresos / gasto) además del ROI: ROAS = ROI + 1.", agent="Agente de Campaña Romántica", status="started"
+2026-10-30 15:02:25: task_name="None", task="Recibes las propuestas de las campañas Cultural y Romántica. Decide el reparto del presupuesto restante (500.0 MXN) para maximizar la utilidad total del sistema. 1) Compara ambas propuestas y sus solicitudes (pedir/ceder). 2) Si algo es ambiguo o inconsistente, delega una pregunta de aclaración al agente de campaña correspondiente. 3) Propón el reparto final y valídalo con validar_reparto_presupuesto; si viola alguna restricción, ajústalo hasta que sea válido. 4) Justifica la decisión.", agent="Broker de Presupuesto", status="started"
+2026-10-30 15:03:27: task_name="None", task="Eres responsable de la campaña Cultural. Estamos en la iteración 24 de 48 y el presupuesto restante total del sistema es 500.0 MXN. 1) Lee tus métricas con leer_metricas_campana (campana='Cultural', hasta_iteracion=24) y diagnostica el desempeño frente a los objetivos. 2) Usa proyectar_escenario para comparar al menos 3 alternativas (mantener segmento y presupuesto, cambiar de segmento, subir o bajar presupuesto). 3) Elige la mejor por utilidad (calcular_utilidad) y valídala con validar_restricciones. 4) Declara cuánto presupuesto necesitas para lo que queda y si pides o cedes presupuesto al Broker. Reporta siempre el ROAS (ingresos / gasto) además del ROI: ROAS = ROI + 1.", agent="Agente de Campaña Cultural", status="completed", output="```json
+{
+  "campana": "Cultural",
+  "diagnostico": "Tras 24 de 48 iteraciones, la campaña ha gastado 250.00 MXN con 7,699 impresiones, 268 clics (CTR 3.48%), 8 leads, CPL 31.25 MXN, ingresos 720.00 MXN, ROAS 2.88 (ROI 1.88) y estabilidad 0.171. Frente a los objetivos, el volumen de leads está por debajo de lo necesario para la ocupación y el CPL es alto. El segmento actual (1, Viajeros 35-55) opera con un CPM efectivo de 37-39 MXN en las últimas 4 iteraciones, por encima de su rango de inventario (25-35 MXN), y en esas 4 iteraciones solo registró 1 conversión. La rentabilidad (ROAS 2.88 > 1) es positiva, pero la eficiencia de costo está deteriorándose. Quedan 24 iteraciones y 250 MXN disponibles en la campaña.",
+  "alternativas_evaluadas": [
+    {"segment_id": 1, "presupuesto": 250, "leads": 17.4, "cpl": 28.78, "roas": 3.13, "roi": 2.13, "utilidad": 0.7381},
+    {"segment_id": 5, "presupuesto": 250, "leads": 18.9, "cpl": 26.50, "roas": 3.40, "roi": 2.40, "utilidad": 0.7694},
+    {"segment_id": 7, "presupuesto": 250, "leads": 17.8, "cpl": 28.17, "roas": 3.19, "roi": 2.19, "utilidad": 0.7465},
+    {"segment_id": 1, "presupuesto": 200, "leads": 15.5, "cpl": 29.03, "roas": 3.10, "roi": 2.10, "utilidad": 0.6986},
+    {"segment_id": 5, "presupuesto": 200, "leads": 16.7, "cpl": 26.96, "roas": 3.34, "roi": 2.34, "utilidad": 0.7236},
+    {"segment_id": 7, "presupuesto": 200, "leads": 15.8, "cpl": 28.48, "roas": 3.16, "roi": 2.16, "utilidad": 0.7048},
+    {"segment_id": 1, "presupuesto": 300, "leads": 19.2, "cpl": 28.57, "roas": 3.15, "roi": 2.15, "utilidad": 0.7756},
+    {"segment_id": 5, "presupuesto": 300, "leads": 21.0, "cpl": 26.14, "roas": 3.44, "roi": 2.44, "utilidad": 0.8131},
+    {"segment_id": 5, "presupuesto": 150, "leads": 14.5, "cpl": 27.55, "roas": 3.27, "roi": 2.27, "utilidad": 0.6777}
+  ],
+  "propuesta": {
+    "segment_id": 5,
+    "presupuesto_restante_mxn": 300,
+    "cambio_puja_pct": 0,
+    "cambio_audiencia": true,
+    "roas_proyectado": 3.44
+  },
+  "utilidad_esperada": 0.8131,
+  "solicitud_al_broker": {
+    "tipo": "pedir",
+    "monto_mxn": 50,
+    "razon": "La campaña tiene 250 MXN disponibles y la mejor alternativa (segmento 5 con 300 MXN para las 24 iteraciones restantes) requiere 50 MXN adicionales. Es la alternativa de mayor utilidad (0.8131 frente a 0.7694 con 250 MXN) y el aumento de 20% respeta el límite de ±20% por iteración. Ver nota de confianza sobre la fuente del segmento 5."
+  },
+  "validacion": {
+    "resultado": {"valido": true, "violaciones": [], "advertencias": []},
+    "detalle": "Validado con cambio_presupuesto_pct=0.2 (+20%), cambio_puja_pct=0, cambios_audiencia=1, pausar=false, roi_actual=1.88. Un intento previo con el valor 20 fue rechazado por error de unidades (se interpretó como +2000%); el valor correcto es 0.2."
+  },
+  "notas": [
+    "Las proyecciones de 12 días incluyen los 250 MXN ya gastados: gasto total proyectado de 550 MXN con 300 MXN nuevos.",
+    "El segmento 5 tiene fuente 'sintetico' según el inventario. Su conversión y CPM deben validarse con datos reales antes de consolidar el cambio de audiencia.",
+    "Si el Broker no puede ceder 50 MXN, la alternativa sin pedir presupuesto es el segmento 5 con 250 MXN (utilidad 0.7694, ROAS 3.40, ROI 2.40, 18.9 leads).",
+    "El cambio de audiencia (segmento 1 a 5) es el único cambio de la iteración, dentro del límite de 1."
+  ]
+}
+```"
+2026-10-30 15:03:27: task_name="None", task="Eres responsable de la campaña Romántica. Estamos en la iteración 24 de 48 y el presupuesto restante total del sistema es 500.0 MXN. 1) Lee tus métricas con leer_metricas_campana (campana='Romántica', hasta_iteracion=24) y diagnostica el desempeño frente a los objetivos. 2) Usa proyectar_escenario para comparar al menos 3 alternativas (mantener segmento y presupuesto, cambiar de segmento, subir o bajar presupuesto). 3) Elige la mejor por utilidad (calcular_utilidad) y valídala con validar_restricciones. 4) Declara cuánto presupuesto necesitas para lo que queda y si pides o cedes presupuesto al Broker. Reporta siempre el ROAS (ingresos / gasto) además del ROI: ROAS = ROI + 1.", agent="Agente de Campaña Romántica", status="completed", output="```json
+{
+  "campana": "Romántica",
+  "diagnostico": "Tras 24 de 48 iteraciones, la campaña acumula gasto de 250.00 MXN, 7,290 impresiones, 253 clics (CTR 3.47%), 12 leads (CPL 20.83 MXN), ingresos de 1,080 MXN, ROAS 4.32 y ROI 3.32. La estabilidad es 0.711. El rendimiento acumulado es sólido, pero en las últimas 4 iteraciones (21 a 24) hubo solo 2 conversiones con un CPM efectivo de 36 a 43 MXN, por encima del CPM esperado de 35.2 MXN para el segmento 3 y del rango de 28 a 38 MXN del inventario. Esto indica presión de costo en fin de semana. Quedan 250.00 MXN (10.4167 MXN por iteración durante 24 iteraciones). El segmento 3 sigue siendo el de mejor relación conversión/costo entre los disponibles para esta campaña, por lo que se mantiene como segmento principal. Como nota de datos, las cuatro últimas iteraciones aparecen fechadas el 2026-11-14 en la herramienta, así que conviene revisar esa trazabilidad.",
+  "alternativas_evaluadas": [
+    {
+      "segment_id": 3,
+      "presupuesto": 250,
+      "leads": 23.5,
+      "cpl": 21.27,
+      "roas": 4.23,
+      "roi": 3.23,
+      "utilidad": 0.9484
+    },
+    {
+      "segment_id": 3,
+      "presupuesto": 200,
+      "leads": 21.2,
+      "cpl": 21.22,
+      "roas": 4.24,
+      "roi": 3.24,
+      "utilidad": 0.9101
+    },
+    {
+      "segment_id": 3,
+      "presupuesto": 300,
+      "leads": 25.8,
+      "cpl": 21.31,
+      "roas": 4.22,
+      "roi": 3.22,
+      "utilidad": 0.9567
+    },
+    {
+      "segment_id": 9,
+      "presupuesto": 250,
+      "leads": 23.1,
+      "cpl": 21.63,
+      "roas": 4.16,
+      "roi": 3.16,
+      "utilidad": 0.942
+    },
+    {
+      "segment_id": 8,
+      "presupuesto": 250,
+      "leads": 22.1,
+      "cpl": 22.6,
+      "roas": 3.98,
+      "roi": 2.98,
+      "utilidad": 0.9254
+    },
+    {
+      "segment_id": 10,
+      "presupuesto": 250,
+      "leads": 22.4,
+      "cpl": 22.32,
+      "roas": 4.03,
+      "roi": 3.03,
+      "utilidad": 0.9301
+    }
+  ],
+  "propuesta": {
+    "segment_id": 3,
+    "presupuesto_restante_mxn": 300,
+    "cambio_puja_pct": 0,
+    "cambio_audiencia": false,
+    "roas_proyectado": 4.22
+  },
+  "utilidad_esperada": 0.9567,
+  "solicitud_al_broker": {
+    "tipo": "pedir",
+    "monto_mxn": 50,
+    "razon": "Para el resto de la campaña (iteraciones 25 a 48) el segmento 3 con 300 MXN da la mayor utilidad proyectada (U = 0.9567, 25.8 leads a 12 días, CPL 21.31 MXN, ROAS 4.22). Esto supera los 250 MXN disponibles en 50 MXN. La mejora frente a mantener 250 MXN (U = 0.9484) es marginal: el ROI es casi igual (3.22 frente a 3.23) y la ganancia viene de +2.3 leads. Ceder 50 MXN desde Cultural es viable porque Cultural tiene ROAS acumulado de 2.88 (ROI 1.88) y un CPL de 31.25 MXN, por debajo del rendimiento de Romántica. El aumento de 250 a 300 equivale a +20%, dentro del límite de la regla. Si el Broker no concede los 50 MXN, la alternativa de respaldo es mantener el segmento 3 con 250 MXN (U = 0.9484, ROAS 4.23)."
+  },
+  "validacion": {
+    "cambio_presupuesto": "+20% (250 a 300 MXN)",
+    "cambio_puja_pct": 0,
+    "cambios_audiencia": 0,
+    "pausar": false,
+    "valido": true,
+    "violaciones": [],
+    "advertencias": []
+  }
+}
+```"
+2026-10-30 15:04:41: task_name="None", task="Recibes las propuestas de las campañas Cultural y Romántica. Decide el reparto del presupuesto restante (500.0 MXN) para maximizar la utilidad total del sistema. 1) Compara ambas propuestas y sus solicitudes (pedir/ceder). 2) Si algo es ambiguo o inconsistente, delega una pregunta de aclaración al agente de campaña correspondiente. 3) Propón el reparto final y valídalo con validar_reparto_presupuesto; si viola alguna restricción, ajústalo hasta que sea válido. 4) Justifica la decisión.", agent="Broker de Presupuesto", status="completed", output="```json
+{
+  "presupuesto_cultural_mxn": 250,
+  "presupuesto_romantica_mxn": 250,
+  "cambio_pct": {
+    "Cultural": 0,
+    "Romantica": 0
+  },
+  "segmento_final": {
+    "Cultural": 5,
+    "Romantica": 3
+  },
+  "justificacion": "Decisión: reparto 250/250 del presupuesto restante de 500 MXN, sin cambio de presupuesto en ninguna campaña. Cultural pasa al segmento 5 con 250 MXN (un cambio de audiencia, de 1 a 5, dentro del límite de 1 por iteración) y sin cambio de puja. Romántica se mantiene en el segmento 3 con 250 MXN, sin cambios.\n\n1) Solicitudes en conflicto. Cultural pidió 50 MXN para llegar a 300 MXN en el segmento 5. Romántica pidió los mismos 50 MXN para llegar a 300 MXN en el segmento 3. Como el total es fijo en 500 MXN, ambas solicitudes no pueden concederse a la vez. Cualquier reparto 300/200 quita 50 MXN a una campaña.\n\n2) Evaluación del segmento 5 de Cultural. Su utilidad a 300 MXN (0.8131) depende de datos del inventario marcados como 'sintetico'. El propio agente Cultural confirmó que no hay evidencia real que respalde su conversión (3.0–3.8%) ni su CPM (18–26 MXN). Su segmento actual (1) tiene CPM real de 37–39 MXN, fuera del rango de inventario de 25–35 MXN, así que sus proyecciones también son inciertas. Con 250 MXN, el segmento 5 da U = 0.7694 y el segmento 1 da U = 0.7381 según la herramienta; por eso el cambio a 5 es preferible aun con 250 MXN, y se trata como prueba condicionada.\n\n3) Evaluación de Romántica. El segmento 3 es el de mejor relación conversión/costo entre sus opciones: con 250 MXN da U = 0.9484 (ROAS 4.23, CPL 21.27 MXN) con datos reales de su historial. Su ROI acumulado es 3.32 y su estabilidad 0.711. Quitarle 50 MXN lo lleva a 200 MXN en el segmento 3 con U = 0.9101, una pérdida de 0.038 sobre datos reales, a cambio de una ganancia no validada de 0.044 para Cultural.\n\n4) Comparación de alternativas. Con 300/200 (Cultural en segmento 5, Romántica en segmento 3), la suma nominal de utilidades es 0.8131 + 0.9101 = 1.7232. Con 250/250 es 0.7694 + 0.9484 = 1.7178. La diferencia de 0.0054 es menor que la incertidumbre de la proyección del segmento 5: su ganancia depende de datos sintéticos, mientras que la pérdida de Romántica es real. Por eso se elige 250/250.\n\n5) Riesgos a vigilar. (a) El CPM efectivo de Romántica en las iteraciones 21–24 fue de 36–43 MXN, por encima de su inventario (28–38 MXN); la herramienta no permite introducir un CPM distinto, así que las proyecciones pueden ser optimistas. (b) Las iteraciones 21–24 de Romántica tienen fecha 2026-11-14 en la herramienta; el agente confirmó que las fechas son consecutivas y no hay duplicados, así que se mantienen. (c) Un CPM real de Cultural por encima de 26 MXN, o una conversión real por debajo de 3% durante 4 iteraciones seguidas, activa la reversión al segmento 1 en la siguiente iteración permitida.\n\n6) Revisión futura. Si en las próximas iteraciones el segmento 5 se valida con datos reales, el reparto puede revisarse con el límite de ±20% por iteración. La decisión no bloquea un ajuste posterior.",
+  "aclaraciones_solicitadas": [
+    {
+      "destinatario": "Agente de Campaña Cultural",
+      "pregunta": "¿Hay evidencia real (no sintética) del segmento 5 que respalde la utilidad de 0.8131 a 300 MXN? Si no, ¿mantienes la solicitud o aceptas 250 MXN?",
+      "respuesta": "No hay evidencia real del segmento 5 (fuente 'sintetico'). No mantiene los 300 MXN. Acepta 250/250 y recomienda mover Cultural al segmento 5 con 250 MXN como prueba condicionada, con criterios de reversión al segmento 1 si el CPM real supera 26 MXN o la conversión real queda por debajo de 3% durante 4 iteraciones seguidas."
+    },
+    {
+      "destinatario": "Agente de Campaña Romántica",
+      "pregunta": "¿Son fiables las iteraciones 21 a 24 (fechadas 2026-11-14)? ¿Qué segmento y presupuesto recomiendas si solo hay 200 MXN o 250 MXN?",
+      "respuesta": "Las iteraciones 21–24 son fiables: fechas consecutivas, sin duplicados ni huecos. Con 250 MXN recomienda el segmento 3 (U = 0.9484); con 200 MXN, también el segmento 3 (U = 0.9101). Señala como riesgo que el CPM real (36–43 MXN) supera el inventario y no está cuantificado en la proyección."
+    }
+  ],
+  "validacion": {
+    "llamada": "validar_reparto_presupuesto(nuevo_cultural=250, nuevo_romantica=250)",
+    "resultado": {
+      "valido": true,
+      "presupuesto_actual": {"Cultural": 250.0, "Romantica": 250.0},
+      "presupuesto_nuevo": {"Cultural": 250.0, "Romantica": 250.0},
+      "cambio_pct": {"Cultural": 0.0, "Romantica": 0.0},
+      "violaciones": []
+    }
+  }
+}
+```"
+2026-10-30 15:04:41: task_name="None", task="Audita la decisión final del sistema. 1) Verifica el reparto con validar_reparto_presupuesto. 2) Verifica cada campaña con validar_restricciones usando los cambios de presupuesto, de puja y de audiencia propuestos. 3) Contrasta lo proyectado con los objetivos (CPL ≤ 21.04 MXN, CTR ≥ 1.8%, ROAS ≥ 2.5x, 45-48 leads) y señala qué se cumple y qué no. El ROAS no es el ROI: ROAS = ROI + 1, así que un ROI de 1.5 equivale a un ROAS de 2.5x; compara el ROAS, no el ROI, contra la meta. 4) Emite un veredicto: aprobado, aprobado_con_observaciones o rechazado.", agent="Monitor Global de Cumplimiento", status="started"
+2026-10-30 15:05:02: task_name="None", task="Audita la decisión final del sistema. 1) Verifica el reparto con validar_reparto_presupuesto. 2) Verifica cada campaña con validar_restricciones usando los cambios de presupuesto, de puja y de audiencia propuestos. 3) Contrasta lo proyectado con los objetivos (CPL ≤ 21.04 MXN, CTR ≥ 1.8%, ROAS ≥ 2.5x, 45-48 leads) y señala qué se cumple y qué no. El ROAS no es el ROI: ROAS = ROI + 1, así que un ROI de 1.5 equivale a un ROAS de 2.5x; compara el ROAS, no el ROI, contra la meta. 4) Emite un veredicto: aprobado, aprobado_con_observaciones o rechazado.", agent="Monitor Global de Cumplimiento", status="completed", output="```json
+{
+  "veredicto": "aprobado_con_observaciones",
+  "restricciones_cumplidas": true,
+  "violaciones": [],
+  "objetivos": {
+    "CPL": {
+      "meta": "≤ 21.04 MXN",
+      "proyectado": "Cultural (segmento 5, 250 MXN): 26.50 MXN. Romántica (segmento 3, 250 MXN): 21.27 MXN.",
+      "cumple": "No. Cultural excede la meta por 5.46 MXN. Romántica queda 0.23 MXN por encima. Acumulado Romántica: 20.83 MXN (sí cumple)."
+    },
+    "CTR": {
+      "meta": "≥ 1.8%",
+      "proyectado": "No reportado por la herramienta para la propuesta final. Acumulado: Cultural 3.48%, Romántica 3.47%.",
+      "cumple": "Sí en el acumulado de ambas campañas. No verificable en la proyección."
+    },
+    "ROAS": {
+      "meta": "≥ 2.5x (ROI ≥ 1.5)",
+      "proyectado": "Cultural (segmento 5, 250 MXN): 3.40x (ROI 2.40). Romántica (segmento 3, 250 MXN): 4.23x (ROI 3.23).",
+      "cumple": "Sí en ambas campañas, con margen."
+    },
+    "leads": {
+      "meta": "45-48 leads",
+      "proyectado": "18.9 (Cultural) + 23.5 (Romántica) = 42.4 leads en la proyección. Acumulado previo: 8 + 12 = 20 leads.",
+      "cumple": "No, según la proyección (42.4 < 45). Si la meta se interpreta como total acumulado más proyección (62.4), se superaría. La base de la meta debe aclararse."
+    }
+  },
+  "riesgos": [
+    "Cultural (segmento 5) tiene fuente 'sintetico'. Su utilidad de 0.7694 con 250 MXN no tiene respaldo real. El CPL proyectado de 26.50 MXN queda lejos de la meta. Se trata como prueba condicionada.",
+    "Cultural arrastra un CPM efectivo de 37-39 MXN con el segmento 1. El cambio a segmento 5 es una hipótesis por validar. Criterio de reversión: CPM real > 26 MXN o conversión < 3% durante 4 iteraciones seguidas.",
+    "Romántica registró un CPM efectivo de 36-43 MXN en las iteraciones 21-24, por encima de su inventario (28-38 MXN). La herramienta no permite ingresar ese CPM, por lo que las proyecciones pueden ser optimistas.",
+    "Las iteraciones 21-24 de Romántica están fechadas 2026-11-14. El agente confirma fechas consecutivas y sin duplicados, pero la trazabilidad debe revisarse.",
+    "Las dos solicitudes de 50 MXN (Cultural y Romántica) eran incompatibles con el total fijo de 500 MXN. La decisión final las resuelve en 250/250 y no requiere cambio de presupuesto. Las alternativas de 300 MXN no están aprobadas.",
+    "Riesgo de meta de leads: la proyección (42.4) queda por debajo de 45 leads. Sin más presupuesto o una mejora de CPL, no se alcanzará el rango objetivo.",
+    "Restricción de audiencia: Cultural usa su único cambio de audiencia de la iteración (1 → 5). Romántica no cambia audiencia."
+  ],
+  "resumen_ejecutivo": [
+    "Decisión auditada: reparto 250/250 MXN, sin cambios de presupuesto ni de puja; cumple todas las reglas del PEAS (validación verificada).",
+    "ROAS proyectado: Cultural 3.40x y Romántica 4.23x, ambos por encima de la meta de 2.5x.",
+    "CPL: Romántica 21.27 MXN (≈ meta de 21.04, por poco); Cultural 26.50 MXN (no cumple).",
+    "Leads proyectados 42.4, por debajo del rango de 45-48; se requiere aclarar la base de la meta.",
+    "Cultural (segmento 5) es una prueba condicionada con datos sintéticos; Romántica mantiene su segmento con datos reales. Vigilar CPM y fechas."
+  ]
+}
+```"
