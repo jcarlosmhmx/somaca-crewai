@@ -1,5 +1,19 @@
+# Python 3.11 o 3.12 (CrewAI 1.15.x no soporta aún todas las versiones nuevas de Python)
+# Motor multiagente (incluye el proveedor nativo de OpenAI; el extra agrega Anthropic)
 crewai[anthropic]==1.15.33
-python-dotenv==1.2.4
-numpy
-pandas
-pytest
+python-dotenv>=1.0
+numpy>=1.26
+pandas>=2.1
+
+# API (capa REST + Server-Sent Events)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+
+# GUI
+streamlit>=1.50
+requests>=2.31
+
+# Pruebas
+pytest>=8
+httpx>=0.27   # lo usa fastapi.testclient

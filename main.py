@@ -1,7 +1,8 @@
 """Punto de entrada: corre el Crew completo sobre el caso de prueba y guarda el resultado.
 
 Uso:  python main.py
-Requiere .env con ANTHROPIC_API_KEY (ver .env.example).
+Requiere .env con la llave del proveedor elegido en MODEL (ver .env.example).
+Para la GUI con monitor en vivo y Human-in-the-Loop usa la API + Streamlit (ver README).
 """
 import json
 from pathlib import Path
@@ -18,7 +19,7 @@ def main():
     Path("logs/resultado_final.md").write_text(str(resultado), encoding="utf-8")
     print("\n=== RESPUESTA FINAL ===\n" + str(resultado))
 
-    # Consumo de tokens de la corrida (para estimar el costo en console.anthropic.com → Usage)
+    # Consumo de tokens de la corrida (para estimar el costo en la consola del proveedor)
     uso = getattr(resultado, "token_usage", None)
     if uso is not None:
         Path("logs/uso_tokens.txt").write_text(str(uso), encoding="utf-8")

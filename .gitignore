@@ -18,3 +18,15 @@ venv/
 
 # Logs: se ignoran las corridas de depuración (logs/archivo/); la corrida final se versiona
 logs/archivo/
+
+# Base de datos local de corridas y decisiones (se regenera)
+data/somaca.db
+data/*.db-*
+# Logs de corridas desde la API (la corrida final de la Fase 3 sí se versiona)
+logs/corrida_*.log
+logs/api_demo.log
+logs/ui_demo.log
+
+# Logs de corridas locales desde la API y archivos comprimidos
+logs/corrida_2*
+*.zip

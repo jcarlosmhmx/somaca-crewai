@@ -6,9 +6,20 @@ Las descripciones usan las variables {iteracion_corte}, {fecha_corte}, {primer_d
 """
 from crewai import Task
 
+# Reintentos cuando un guardrail rechaza la salida (el error se devuelve al agente).
+REINTENTOS_GUARDRAIL = 2
 
-def crear_tareas(a: dict) -> list[Task]:
+
+def crear_tareas(a: dict, guardrails: dict | None = None) -> list[Task]:
+    """Crea las 5 tareas. `guardrails` viene de guardrails.crear_guardrails(); si es None, no se
+    aplican (útil para depurar el prompt)."""
+    g = guardrails or {}
+
+    def _gr(clave: str) -> dict:
+        return {"guardrail": g[clave], "guardrail_max_retries": REINTENTOS_GUARDRAIL} if clave in g else {}
+
     analisis = Task(
+        name="T1 Análisis de mercado",
         description=(
             "Estamos en la iteración {iteracion_corte} de 48 (fecha de corte: {fecha_corte}). Quedan "
             "los días del {primer_dia_restante} al {ultimo_dia}. 1) Consulta el CPM de mercado de cada "
@@ -22,10 +33,12 @@ def crear_tareas(a: dict) -> list[Task]:
             "lista de 2 elementos con segment_id, nombre y justificacion) y observaciones (texto breve)."
         ),
         agent=a["analista"],
+        **_gr("analisis"),
     )
 
-    def propuesta_campana(nombre: str, clave: str) -> Task:
+    def propuesta_campana(nombre: str, clave: str, num: int) -> Task:
         return Task(
+            name=f"T{num} Propuesta {nombre}",
             description=(
                 f"Eres responsable de la campaña {nombre}. Estamos en la iteración {{iteracion_corte}} de 48 "
                 "y el presupuesto restante total del sistema es {presupuesto_restante} MXN. 1) Lee tus "
@@ -47,12 +60,14 @@ def crear_tareas(a: dict) -> list[Task]:
             agent=a[clave],
             context=[analisis],
             async_execution=True,  # las dos campañas se evalúan en paralelo
+            **_gr(clave),
         )
 
-    cultural = propuesta_campana("Cultural", "cultural")
-    romantica = propuesta_campana("Romántica", "romantica")
+    cultural = propuesta_campana("Cultural", "cultural", 2)
+    romantica = propuesta_campana("Romántica", "romantica", 3)
 
     asignacion = Task(
+        name="T4 Asignación del presupuesto",
         description=(
             "Recibes las propuestas de las campañas Cultural y Romántica. Decide el reparto del "
             "presupuesto restante ({presupuesto_restante} MXN) para maximizar la utilidad total del "
@@ -69,9 +84,11 @@ def crear_tareas(a: dict) -> list[Task]:
         ),
         agent=a["broker"],
         context=[cultural, romantica],
+        **_gr("asignacion"),
     )
 
     auditoria = Task(
+        name="T5 Auditoría",
         description=(
             "Audita la decisión final del sistema. 1) Verifica el reparto con "
             "validar_reparto_presupuesto. 2) Verifica cada campaña con validar_restricciones usando los "
@@ -87,6 +104,7 @@ def crear_tareas(a: dict) -> list[Task]:
         ),
         agent=a["monitor"],
         context=[analisis, cultural, romantica, asignacion],
+        **_gr("auditoria"),
     )
 
     return [analisis, cultural, romantica, asignacion, auditoria]

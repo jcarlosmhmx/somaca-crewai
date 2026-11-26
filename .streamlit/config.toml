@@ -1,0 +1,10 @@
+# Paleta de la Fase 4 (verde petróleo sobre marfil)
+[theme]
+base = "light"
+primaryColor = "#173A3A"
+backgroundColor = "#F7F5F0"
+secondaryBackgroundColor = "#F1EEE6"
+textColor = "#173A3A"
+
+[server]
+headless = true

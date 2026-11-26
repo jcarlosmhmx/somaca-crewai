@@ -7,14 +7,31 @@ import json
 
 from crewai.tools import tool
 
+import eventos
 from tools import logica
+
+# Nombre de la función pura → nombre de la herramienta que ve el agente (para el monitor en vivo).
+_NOMBRES = {
+    "consultar_cpm": "consultar_cpm_mercado", "inventario": "leer_inventario_audiencias",
+    "metricas": "leer_metricas_campana", "utilidad": "calcular_utilidad",
+    "proyectar_escenario": "proyectar_escenario", "validar_accion": "validar_restricciones",
+    "validar_reparto": "validar_reparto_presupuesto",
+}
 
 
 def _json(fn, *args, **kwargs) -> str:
+    """Ejecuta la lógica pura, la serializa y publica el evento para el monitor en vivo."""
     try:
-        return json.dumps(fn(*args, **kwargs), ensure_ascii=False)
+        salida = json.dumps(fn(*args, **kwargs), ensure_ascii=False)
+        ok = True
     except ValueError as e:
-        return json.dumps({"error": str(e)}, ensure_ascii=False)
+        salida = json.dumps({"error": str(e)}, ensure_ascii=False)
+        ok = False
+    nombre = _NOMBRES.get(getattr(fn, "__name__", ""), getattr(fn, "__name__", "herramienta"))
+    eventos.emitir("herramienta", herramienta=nombre, ok=ok, agente=eventos.agente_actual(),
+                   entrada=eventos.recortar(json.dumps({"args": args, **kwargs}, ensure_ascii=False, default=str), 300),
+                   salida=eventos.recortar(salida, 900))
+    return salida
 
 
 @tool("consultar_cpm_mercado")
